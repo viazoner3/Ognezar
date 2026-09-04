@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Живой сад — Чудесные Холмы</title>
+  <meta name="description" content="Живой сад в Чудесных Холмах. ФХ «Огнезар». Экоотдых, сад, ферма, выходные, события и жизнь белорусской деревни.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --cream:#f4f0e7;
+      --paper:#faf8f2;
+      --ink:#182019;
+      --green:#20372b;
+      --green2:#2e4b39;
+      --red:#8f4035;
+      --muted:#74766f;
+      --line:rgba(24,32,25,.14);
+      --white:#fffdf8;
+      --radius:28px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    .container{width:min(1240px,calc(100% - 48px));margin:auto}
+    .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;opacity:.68}
+    .serif{font-family:"Playfair Display",Georgia,serif}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:15px 22px;border-radius:999px;border:1px solid transparent;font-weight:700;font-size:14px;transition:.25s}
+    .btn-dark{background:var(--ink);color:#fff}
+    .btn-dark:hover{transform:translateY(-2px);background:#0f1511}
+    .btn-light{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.35);color:#fff;backdrop-filter:blur(10px)}
+    .btn-light:hover{background:#fff;color:var(--ink)}
+    .btn-outline{border-color:var(--line)}
+    .btn-outline:hover{background:var(--ink);color:#fff}
+
+    header{position:fixed;z-index:20;top:0;left:0;right:0;color:#fff;padding:18px 0;transition:.3s}
+    header.scrolled{background:rgba(24,32,25,.94);backdrop-filter:blur(16px);padding:12px 0}
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-mark{width:38px;height:38px;border:1px solid rgba(255,255,255,.55);border-radius:50%;display:grid;place-items:center;font-family:Georgia,serif;font-size:18px}
+    .brand-title{font-size:14px;font-weight:700;letter-spacing:.03em}
+    .brand-sub{font-size:10px;opacity:.7;margin-top:2px}
+    nav{display:flex;gap:25px;align-items:center;font-size:13px}
+    nav a{opacity:.9}
+    nav a:hover{opacity:1}
+    .nav-cta{padding:10px 17px;border-radius:999px;background:#fff;color:var(--ink);font-weight:700}
+
+    .hero{height:100vh;min-height:680px;position:relative;color:#fff;overflow:hidden;background:#26392e}
+    .hero-bg{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(9,18,12,.73) 0%,rgba(9,18,12,.36) 47%,rgba(9,18,12,.18) 100%),url("https://images.unsplash.com/photo-1725702131100-eaec984eb76c?auto=format&fit=crop&w=2200&q=88");background-size:cover;background-position:center}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,15,10,.55),transparent 45%)}
+    .hero-content{position:relative;z-index:2;height:100%;display:flex;align-items:flex-end;padding-bottom:72px}
+    .hero-copy{max-width:780px}
+    .hero h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(68px,10vw,142px);line-height:.83;font-weight:500;letter-spacing:-.055em;margin:22px 0 30px}
+    .hero p{font-size:clamp(18px,2vw,25px);line-height:1.35;max-width:590px;margin:0 0 32px}
+    .hero-meta{position:absolute;right:0;bottom:80px;z-index:3;display:flex;align-items:center;gap:13px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+    .scroll{position:absolute;bottom:23px;left:50%;transform:translateX(-50%);z-index:3;font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.7}
+
+    section{padding:120px 0}
+    .intro{background:var(--cream)}
+    .intro-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:90px;align-items:center}
+    .intro h2{font-size:clamp(45px,6vw,84px);line-height:.96;letter-spacing:-.045em;margin:20px 0 30px;font-weight:500}
+    .intro p{font-size:19px;line-height:1.65;max-width:630px;color:#4d534d}
+    .quote{border-left:1px solid var(--red);padding-left:28px;margin-top:38px;font-family:"Playfair Display",Georgia,serif;font-size:26px;line-height:1.35}
+    .intro-photo{height:650px;border-radius:var(--radius);overflow:hidden;position:relative}
+    .photo-caption{position:absolute;left:20px;bottom:18px;color:#fff;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(0,0,0,.28);padding:8px 11px;border-radius:999px;backdrop-filter:blur(8px)}
+
+    .dark{background:var(--green);color:#fff}
+    .dark .eyebrow{color:#d9dfd7}
+    .dark .muted{color:#bec8bf}
+    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:50px}
+    h2.section-title{font-family:"Playfair Display",Georgia,serif;font-size:clamp(46px,6vw,82px);line-height:.95;letter-spacing:-.045em;font-weight:500;margin:15px 0 0}
+    .section-intro{max-width:430px;font-size:17px;line-height:1.6;color:#bfc8c0}
+
+    .experience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .experience-card{min-height:410px;border-radius:22px;overflow:hidden;position:relative;background:#31483a}
+    .experience-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,14,9,.82),transparent 60%)}
+    .experience-card:nth-child(1){background-image:url("https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=80");background-size:cover;background-position:center}
+    .experience-card:nth-child(2){background-image:url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=80");background-size:cover;background-position:center}
+    .experience-card:nth-child(3){background-image:url("https://images.unsplash.com/photo-1516214104703-d870798883c5?auto=format&fit=crop&w=1000&q=80");background-size:cover;background-position:center}
+    .experience-card:nth-child(4){background-image:url("https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1000&q=80");background-size:cover;background-position:center}
+    .experience-content{position:absolute;z-index:2;bottom:25px;left:25px;right:25px}
+    .experience-content h3{font-family:"Playfair Display",Georgia,serif;font-size:31px;font-weight:500;margin:9px 0}
+    .experience-content p{margin:0;color:#e1e7e1;line-height:1.45;font-size:14px}
+
+    .weekends{background:var(--paper)}
+    .weekend-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .weekend-card{min-height:410px;border-radius:var(--radius);padding:35px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;color:#fff}
+    .weekend-card::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,18,12,.83),rgba(10,18,12,.05) 72%)}
+    .weekend-card > *{position:relative;z-index:1}
+    .weekend-card:nth-child(1){background:url("https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=1500&q=85") center/cover}
+    .weekend-card:nth-child(2){background:url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1500&q=85") center/cover}
+    .weekend-card:nth-child(3){background:url("https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1500&q=85") center/cover}
+    .weekend-card:nth-child(4){background:url("https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1500&q=85") center/cover}
+    .tag{font-size:11px;text-transform:uppercase;letter-spacing:.14em;opacity:.82}
+    .weekend-card h3{font-family:"Playfair Display",Georgia,serif;font-size:42px;line-height:1;margin:10px 0}
+    .weekend-card p{max-width:430px;margin:0 0 20px;line-height:1.5}
+
+    .day{background:#e8e4da}
+    .day-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
+    .day h2{font-family:"Playfair Display",Georgia,serif;font-size:clamp(48px,6vw,80px);font-weight:500;line-height:.94;letter-spacing:-.05em;margin:18px 0 30px}
+    .day p{font-size:18px;line-height:1.6;color:#555a54}
+    .timeline{border-top:1px solid var(--line)}
+    .time-row{display:grid;grid-template-columns:100px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+    .time{font-weight:700;font-size:13px;letter-spacing:.08em}
+    .time-row strong{font-size:17px}
+    .time-row span{display:block;color:#6d716b;font-size:14px;margin-top:5px}
+
+    .orchard{background:#171f19;color:#fff;position:relative;overflow:hidden}
+    .orchard-grid{display:grid;grid-template-columns:1fr 1fr;min-height:640px;align-items:center}
+    .orchard-photo{height:640px;margin-right:70px;background:url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1500&q=85") center/cover;border-radius:0 35px 35px 0}
+    .orchard-copy{padding:70px 0}
+    .orchard-copy h2{font-family:"Playfair Display",Georgia,serif;font-size:clamp(60px,8vw,112px);line-height:.82;font-weight:500;letter-spacing:-.06em;margin:18px 0 30px}
+    .orchard-copy p{font-size:18px;line-height:1.6;color:#c8cec8;max-width:500px}
+    .orchard-number{font-size:120px;font-family:"Playfair Display",Georgia,serif;color:rgba(255,255,255,.08);position:absolute;right:3%;bottom:-25px}
+
+    .seasons{background:var(--cream)}
+    .season-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .season{height:460px;position:relative;overflow:hidden;border-radius:20px}
+    .season::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,18,12,.7),transparent 60%)}
+    .season:nth-child(1){background:url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=900&q=85") center/cover}
+    .season:nth-child(2){background:url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85") center/cover}
+    .season:nth-child(3){background:url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=85") center/cover}
+    .season:nth-child(4){background:url("https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=85") center/cover}
+    .season-content{position:absolute;z-index:2;bottom:22px;left:22px;color:#fff}
+    .season-content h3{font-family:"Playfair Display",Georgia,serif;font-size:36px;font-weight:500;margin:8px 0 0}
+
+    .people{background:var(--paper)}
+    .people-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:60px;align-items:end}
+    .people-photo{height:620px;border-radius:28px;overflow:hidden;background:url("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=85") center/cover}
+    .people-copy h2{font-family:"Playfair Display",Georgia,serif;font-size:clamp(50px,6vw,85px);line-height:.93;font-weight:500;letter-spacing:-.05em;margin:18px 0 28px}
+    .people-copy p{font-size:18px;line-height:1.65;color:#565b55}
+    .people-note{margin-top:45px;padding-top:25px;border-top:1px solid var(--line);font-family:"Playfair Display",Georgia,serif;font-size:25px;line-height:1.4}
+
+    .join{padding:0;background:var(--red);color:#fff}
+    .join-inner{min-height:570px;display:flex;align-items:center;justify-content:space-between;gap:50px}
+    .join h2{font-family:"Playfair Display",Georgia,serif;font-size:clamp(58px,8vw,112px);line-height:.84;font-weight:500;letter-spacing:-.06em;margin:20px 0 25px}
+    .join p{font-size:19px;line-height:1.55;max-width:540px;color:#f4ded8}
+    .join-card{background:#f5efe6;color:var(--ink);width:min(410px,100%);padding:34px;border-radius:28px}
+    .join-card h3{font-family:"Playfair Display",Georgia,serif;font-size:34px;font-weight:500;margin:0 0 22px}
+    .form-row{margin-bottom:12px}
+    .form-row input,.form-row select{width:100%;padding:14px 15px;border:1px solid #d8d1c6;background:#fff;border-radius:13px;font:inherit;color:var(--ink)}
+    .join-card .btn{width:100%;margin-top:5px}
+
+    .instagram{background:var(--paper)}
+    .insta-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-top:45px}
+    .insta-tile{aspect-ratio:1;overflow:hidden;position:relative}
+    .insta-tile:nth-child(1){background:url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=85") center/cover}
+    .insta-tile:nth-child(2){background:url("https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=700&q=85") center/cover}
+    .insta-tile:nth-child(3){background:url("https://images.unsplash.com/photo-1516214104703-d870798883c5?auto=format&fit=crop&w=700&q=85") center/cover}
+    .insta-tile:nth-child(4){background:url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=700&q=85") center/cover}
+    .insta-tile:nth-child(5){background:url("https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=700&q=85") center/cover}
+    .insta-tile:nth-child(6){background:url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=700&q=85") center/cover}
+
+    footer{background:#101611;color:#dfe5df;padding:65px 0 35px}
+    .footer-top{display:flex;justify-content:space-between;gap:40px;padding-bottom:60px}
+    .footer-title{font-family:"Playfair Display",Georgia,serif;font-size:48px;line-height:.95}
+    .footer-links{display:grid;grid-template-columns:repeat(2,150px);gap:12px;font-size:14px;color:#aeb8af}
+    .footer-links a:hover{color:#fff}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;display:flex;justify-content:space-between;font-size:11px;color:#778078}
+
+    @media(max-width:900px){
+      nav a:not(.nav-cta){display:none}
+      .container{width:min(100% - 30px,1240px)}
+      section{padding:80px 0}
+      .hero{min-height:680px}
+      .hero-content{padding-bottom:45px}
+      .hero h1{font-size:70px}
+      .hero-meta{display:none}
+      .intro-grid,.day-grid,.orchard-grid,.people-grid{grid-template-columns:1fr;gap:40px}
+      .intro-photo{height:470px}
+      .experience-grid{grid-template-columns:1fr 1fr}
+      .weekend-grid{grid-template-columns:1fr}
+      .orchard-photo{height:430px;margin:0;border-radius:0}
+      .orchard-copy{padding:70px 20px 80px}
+      .season-grid{grid-template-columns:1fr 1fr}
+      .season{height:360px}
+      .people-photo{height:470px}
+      .join-inner{padding:75px 0;display:grid}
+      .insta-grid{grid-template-columns:repeat(3,1fr)}
+    }
+    @media(max-width:560px){
+      .hero h1{font-size:61px}
+      .hero p{font-size:18px}
+      .experience-grid{grid-template-columns:1fr}
+      .experience-card{min-height:300px}
+      .season-grid{grid-template-columns:1fr}
+      .season{height:360px}
+      .section-head{display:block}
+      .section-intro{margin-top:22px}
+      .footer-top,.footer-bottom{display:block}
+      .footer-links{margin-top:30px}
+      .footer-bottom div+div{margin-top:12px}
+    }
+  </style>
+</head>
+<body>
+<header id="header">
+  <div class="container nav">
+    <a class="brand" href="#">
+      <div class="brand-mark">Ж</div>
+      <div><div class="brand-title">ЖИВОЙ САД</div><div class="brand-sub">Чудесные Холмы · Беларусь</div></div>
+    </a>
+    <nav>
+      <a href="#holmy">Холмы</a>
+      <a href="#sad">Сад</a>
+      <a href="#weekends">Выходные</a>
+      <a href="#events">События</a>
+      <a class="nav-cta" href="#booking">Хочу в Холмы</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-copy">
+        <div class="eyebrow">ФХ «Огнезар» · Большое Запрудье</div>
+        <h1>Живой<br>сад.</h1>
+        <p>Место, куда приезжают замедлиться. Сад, ферма, лес, холмы и люди — в настоящей белорусской деревне.</p>
+        <a class="btn btn-light" href="#weekends">Провести выходные <span>↗</span></a>
+      </div>
+    </div>
+    <div class="hero-meta">80 км от Минска&nbsp;&nbsp; · &nbsp;&nbsp;Воложинский район</div>
+    <div class="scroll">Листайте ↓</div>
+  </section>
+
+  <section class="intro" id="holmy">
+    <div class="container intro-grid">
+      <div>
+        <div class="eyebrow">01 · Чудесные Холмы</div>
+        <h2 class="serif">А если<br>никуда<br>не спешить?</h2>
+        <p>Оставить телефон в кармане. Пойти босиком по траве. Собрать яблоки с дерева. Развести огонь. Выпить чай на крыльце. Не успеть ничего — и именно поэтому успеть главное.</p>
+        <div class="quote">«Город тебя пинает. А деревня гладит по голове и говорит: ты на своём месте».</div>
+      </div>
+      <div class="intro-photo">
+        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1400&q=88" alt="Природа и холмы">
+        <div class="photo-caption">Чудесные Холмы</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" id="sad">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">02 · Живой сад</div><h2 class="section-title">Здесь можно<br>просто быть.</h2></div>
+        <div class="section-intro">Не парк. Не база отдыха. Не музей деревни. Настоящий сад на настоящей земле — место, которым хочется делиться.</div>
+      </div>
+      <div class="experience-grid">
+        <article class="experience-card"><div class="experience-content"><div class="tag">01</div><h3>Собирать</h3><p>Яблоки, ягоды и всё, что даёт сезон.</p></div></article>
+        <article class="experience-card"><div class="experience-content"><div class="tag">02</div><h3>Гулять</h3><p>Между яблонями, по холмам и лесным тропам.</p></div></article>
+        <article class="experience-card"><div class="experience-content"><div class="tag">03</div><h3>Создавать</h3><p>Мастерить, готовить, учиться у людей Холмов.</p></div></article>
+        <article class="experience-card"><div class="experience-content"><div class="tag">04</div><h3>Оставаться</h3><p>На вечер, на ночь или на целые выходные.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="weekends" id="weekends">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">03 · Ваши выходные</div><h2 class="section-title">Выберите<br>свой ритм.</h2></div>
+        <div class="section-intro" style="color:#666">Готовые сценарии — чтобы не думать, чем заняться. Можно приехать на день или остаться до воскресенья.</div>
+      </div>
+      <div class="weekend-grid">
+        <article class="weekend-card"><div class="tag">Для двоих</div><h3>Тихие выходные</h3><p>Сад · лес · баня · ужин · костёр · ночь в деревне.</p><a class="btn btn-light" href="#booking">Выбрать →</a></article>
+        <article class="weekend-card"><div class="tag">С детьми</div><h3>Живая ферма</h3><p>Земля · яблоки · животные · огонь · мастерская · приключение.</p><a class="btn btn-light" href="#booking">Выбрать →</a></article>
+        <article class="weekend-card"><div class="tag">С друзьями</div><h3>Выходные у огня</h3><p>Еда на огне · музыка · холмы · разговоры до ночи.</p><a class="btn btn-light" href="#booking">Выбрать →</a></article>
+        <article class="weekend-card"><div class="tag">Сезонный формат</div><h3>Яблочные выходные</h3><p>Сбор урожая · дегустация · яблочная кухня · сад.</p><a class="btn btn-light" href="#booking">Выбрать →</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="day" id="events">
+    <div class="container day-grid">
+      <div>
+        <div class="eyebrow">04 · Один день</div>
+        <h2>Представьте свой субботний день.</h2>
+        <p>Никакой гонки за впечатлениями. Просто хороший день в деревне — с пространством для случайных разговоров и времени для себя.</p>
+      </div>
+      <div class="timeline">
+        <div class="time-row"><div class="time">10:30</div><div><strong>Приехать</strong><span>Оставить город за дорогой.</span></div></div>
+        <div class="time-row"><div class="time">11:00</div><div><strong>Прогуляться по саду</strong><span>Яблони, трава, холмы.</span></div></div>
+        <div class="time-row"><div class="time">13:00</div><div><strong>Познакомиться с Огнезаром</strong><span>Узнать, как живёт настоящий сад.</span></div></div>
+        <div class="time-row"><div class="time">15:00</div><div><strong>Сделать что-нибудь руками</strong><span>Мастерская или сезонная работа.</span></div></div>
+        <div class="time-row"><div class="time">19:00</div><div><strong>Костёр</strong><span>Еда, чай и разговоры.</span></div></div>
+        <div class="time-row"><div class="time">23:00</div><div><strong>Звёзды</strong><span>А можно остаться до воскресенья.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="orchard">
+    <div class="orchard-grid">
+      <div class="orchard-photo"></div>
+      <div class="orchard-copy">
+        <div class="eyebrow">05 · Сезон урожая</div>
+        <h2>Яблоки.</h2>
+        <p>Старые сорта. Ручной сбор. Настоящий сад. Осенью здесь хочется не просто купить яблоки — хочется самому пройти между деревьями, выбрать своё и увезти с собой кусочек Холмов.</p>
+        <a class="btn btn-light" href="#booking">Приехать на урожай →</a>
+      </div>
+    </div>
+    <div class="orchard-number">01</div>
+  </section>
+
+  <section class="seasons">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">06 · Четыре времени года</div><h2 class="section-title">Холмы<br>меняются.</h2></div>
+        <div class="section-intro" style="color:#666">И каждый сезон даёт свой повод приехать снова.</div>
+      </div>
+      <div class="season-grid">
+        <div class="season"><div class="season-content"><div class="tag">Весна</div><h3>Сад цветёт</h3></div></div>
+        <div class="season"><div class="season-content"><div class="tag">Лето</div><h3>Всё растёт</h3></div></div>
+        <div class="season"><div class="season-content"><div class="tag">Осень</div><h3>Время урожая</h3></div></div>
+        <div class="season"><div class="season-content"><div class="tag">Зима</div><h3>Время тишины</h3></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="people">
+    <div class="container people-grid">
+      <div class="people-photo"></div>
+      <div class="people-copy">
+        <div class="eyebrow">07 · Люди</div>
+        <h2>Место<br>делают<br>люди.</h2>
+        <p>Чудесные Холмы — это не декорация для отдыха. Здесь живут люди, которые переехали из города, строят дома, выращивают сады, делают керамику, мебель, музыку и каждый по-своему придумывает жизнь.</p>
+        <div class="people-note">Приезжайте не только посмотреть на Холмы. Познакомьтесь с теми, кто здесь живёт.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="join" id="booking">
+    <div class="container join-inner">
+      <div>
+        <div class="eyebrow">08 · Встречаемся в Холмах</div>
+        <h2>Может,<br>пора?</h2>
+        <p>Выберите день и расскажите, каким хотите увидеть свой отдых. Мы подскажем, где остановиться, что посмотреть и что можно успеть за выходные.</p>
+      </div>
+      <form class="join-card" onsubmit="event.preventDefault(); alert('Спасибо! Это демонстрационная форма. Здесь подключим Telegram / почту / CRM.');">
+        <h3>Хочу в Холмы</h3>
+        <div class="form-row"><input required placeholder="Ваше имя"></div>
+        <div class="form-row"><input required type="tel" placeholder="Телефон или Telegram"></div>
+        <div class="form-row"><select><option>Когда хотите приехать?</option><option>На день</option><option>На выходные</option><option>На несколько дней</option></select></div>
+        <div class="form-row"><select><option>Кто едет?</option><option>Двое</option><option>Семья с детьми</option><option>Друзья</option><option>Компания</option></select></div>
+        <button class="btn btn-dark" type="submit">Подобрать отдых →</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="instagram">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">09 · Сейчас в Холмах</div><h2 class="section-title">Жизнь<br>прямо сейчас.</h2></div>
+        <div class="section-intro" style="color:#666">Фотографии и новости из жизни сообщества. На финальной версии сюда подключим реальные материалы Instagram.</div>
+      </div>
+      <div class="insta-grid">
+        <a class="insta-tile" href="https://www.instagram.com/chudesnye.holmy/" target="_blank" aria-label="Чудесные Холмы"></a>
+        <a class="insta-tile" href="https://www.instagram.com/chudesnye.holmy/" target="_blank"></a>
+        <a class="insta-tile" href="https://www.instagram.com/zhyvy.sad/" target="_blank"></a>
+        <a class="insta-tile" href="https://www.instagram.com/zhyvy.sad/" target="_blank"></a>
+        <a class="insta-tile" href="https://www.instagram.com/chudesnye.holmy/" target="_blank"></a>
+        <a class="insta-tile" href="https://www.instagram.com/chudesnye.holmy/" target="_blank"></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="eyebrow">Живой сад · ФХ «Огнезар»</div>
+        <div class="footer-title serif">До встречи<br>в Холмах.</div>
+      </div>
+      <div class="footer-links">
+        <a href="#holmy">Холмы</a><a href="#sad">Живой сад</a>
+        <a href="#weekends">Выходные</a><a href="#events">События</a>
+        <a href="https://www.instagram.com/chudesnye.holmy/" target="_blank">Instagram Холмов</a>
+        <a href="https://www.instagram.com/zhyvy.sad/" target="_blank">Instagram сада</a>
+        <a href="https://t.me/izobilieholmov" target="_blank">Telegram</a><a href="#booking">Забронировать</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><div>Чудесные Холмы · Воложинский район · Беларусь</div><div>© 2026 Живой сад</div></div>
+  </div>
+</footer>
+
+<script>
+  const header=document.getElementById('header');
+  window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>40));
+</script>
+</body>
+</html>
