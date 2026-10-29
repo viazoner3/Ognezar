@@ -1,2 +1,92 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Жители Холмов — Живой сад</title><link rel="stylesheet" href="../styles.css"></head><body><header class="site-header"><div class="container nav"><a class="brand" href="../index.html">ЖИВОЙ САД</a>
-<nav class="navlinks"><a href="../pages/holmy.html">Холмы</a><a href="../pages/sad.html">Живой сад</a><a href="../pages/ognezar.html">Огнезар</a><a href="../pages/weekend.html">Выходные</a><a href="../pages/people.html">Жители</a><a href="../pages/products.html">Продукты</a><a href="../pages/contacts.html">Как добраться</a></nav><span class="menu">МЕНЮ</span></div></header><main><section class="page-hero"><div class="container"><div class="kicker">Живой сад · Чудесные Холмы</div><h1>Жители Холмов</h1><p>Главное богатство места — люди. Их истории, ремёсла, музыка, сады и проекты.</p></div></section><section><div class="container content"><div class="people"><article class="person" style="background-image:url(../img/people-1.jpg)"><div><h3>Имя появится здесь</h3><p>Про сад, ремесло или дело.</p></div></article><article class="person" style="background-image:url(../img/people-2.jpg)"><div><h3>История человека</h3><p>Чем он живёт и почему выбрал Холмы.</p></div></article><article class="person" style="background-image:url(../img/people-3.jpg)"><div><h3>Ещё одна история</h3><p>Люди, которые создают атмосферу места.</p></div></article></div></div></section></main><footer class="site-footer"><div class="container footergrid"><div><div class="brand">ЖИВОЙ САД</div><p>Чудесные Холмы · Беларусь<br>ФХ «Огнезар»</p></div><div><b>Навигация</b><p class="small"><a href="../pages/holmy.html">Холмы</a><br><a href="../pages/sad.html">Живой сад</a><br><a href="../pages/weekend.html">Выходные</a><br><a href="../pages/people.html">Жители</a></p></div><div><b>Связь</b><p class="small"><a href="https://www.instagram.com/zhyvy.sad/">Instagram Живого сада</a><br><a href="https://www.instagram.com/chudesnye.holmy/">Instagram Холмов</a></p></div></div></footer></body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Люди Холмов — Чудесные Холмы</title>
+<meta name="description" content="Люди Чудесных Холмов: мастера, музыканты, художники, хранители садов и создатели необычных проектов.">
+<link rel="stylesheet" href="../styles.css">
+<style>
+:root{--paper:#f6f2e9;--ink:#1e2821;--green:#17382b;--rust:#a95d42}
+body{background:var(--paper)}
+.people-hero{padding:145px 0 24px;background:var(--paper);color:var(--ink)}
+.people-hero .kicker{color:var(--rust)}
+.people-hero h1{font-size:clamp(54px,9vw,112px);letter-spacing:-.055em;line-height:.92;margin:0;max-width:1000px}
+.people-hero .lead{font:clamp(19px,2.4vw,27px)/1.4 Georgia,serif;max-width:650px;margin:25px 0 0}
+.people-note{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-top:22px}
+.people-stage-wrap{padding:24px 0 90px;overflow:hidden}
+.people-stage{position:relative;width:min(1280px,calc(100% - 36px));height:clamp(650px,75vw,900px);max-height:920px;margin:auto;isolation:isolate}
+.person-tile{--x:0px;--y:0px;--rot:0deg;position:absolute;left:var(--left);top:var(--top);width:var(--w);height:var(--h);padding:0;border:0;border-radius:3px;overflow:hidden;display:block;text-align:left;background:#d7d0c2;cursor:pointer;transform:translate(var(--x),var(--y)) rotate(var(--rot));transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .45s,box-shadow .45s;box-shadow:0 12px 30px #1d2b2017;outline-offset:5px;color:#fff}
+.person-tile img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.82);transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .5s}
+.person-tile:after{content:"";position:absolute;inset:20% 0 0;background:linear-gradient(180deg,transparent 5%,rgba(10,18,13,.78));opacity:.7;transition:opacity .4s}
+.person-tile .caption{position:absolute;z-index:2;left:17px;right:14px;bottom:17px;opacity:0;transform:translateY(12px);transition:opacity .35s,transform .45s;pointer-events:none;text-shadow:0 1px 12px #0006}
+.person-tile .name{display:block;font:clamp(18px,2vw,28px)/1.05 Georgia,serif;margin-bottom:7px}
+.person-tile .role{display:block;font-size:clamp(10px,1vw,13px);line-height:1.45;max-width:260px}
+.person-tile .number{position:absolute;z-index:2;top:12px;left:14px;color:#fff;font-size:10px;letter-spacing:.16em;opacity:.9}
+.person-tile:hover,.person-tile:focus-visible,.person-tile.is-active{z-index:50;transform:translate(var(--x),calc(var(--y) - 8px)) rotate(0deg) scale(1.075);box-shadow:0 26px 60px #18251d45;filter:saturate(1.08)}
+.person-tile:hover img,.person-tile:focus-visible img,.person-tile.is-active img{transform:scale(1.07);filter:saturate(1.05)}
+.person-tile:hover:after,.person-tile:focus-visible:after,.person-tile.is-active:after{opacity:1}
+.person-tile:hover .caption,.person-tile:focus-visible .caption,.person-tile.is-active .caption{opacity:1;transform:translateY(0)}
+/* A loose, intentionally asymmetric editorial constellation */
+.tile-1{--left:4%;--top:4%;--w:24%;--h:35%;--rot:-3deg}.tile-2{--left:31%;--top:0%;--w:19%;--h:26%;--rot:2deg}.tile-3{--left:54%;--top:5%;--w:27%;--h:34%;--rot:-1deg}.tile-4{--left:82%;--top:15%;--w:15%;--h:27%;--rot:3deg}.tile-5{--left:15%;--top:44%;--w:22%;--h:32%;--rot:2deg}.tile-6{--left:40%;--top:32%;--w:19%;--h:28%;--rot:-2deg}.tile-7{--left:62%;--top:44%;--w:25%;--h:35%;--rot:2deg}.tile-8{--left:0%;--top:78%;--w:13%;--h:18%;--rot:-4deg}.tile-9{--left:34%;--top:66%;--w:22%;--h:28%;--rot:1deg}.tile-10{--left:87%;--top:67%;--w:12%;--h:25%;--rot:-2deg}
+.people-stage.is-playing .person-tile:not(:hover):not(.is-active){--x:var(--push-x,0px);--y:var(--push-y,0px)}
+.people-stage-hint{display:flex;align-items:center;justify-content:space-between;gap:20px;width:min(1280px,calc(100% - 36px));margin:0 auto;color:#5d665e;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.hint-mark{display:flex;align-items:center;gap:10px}.hint-mark:before{content:"↗";font-size:22px;color:var(--rust)}
+.people-bottom{padding:65px 0 85px;background:#e9e2d5}.people-bottom .inner{display:flex;align-items:end;justify-content:space-between;gap:30px}.people-bottom h2{font-size:clamp(35px,5vw,65px);max-width:650px;margin:0}.people-bottom p{max-width:350px;margin:0;color:#4c574e}
+@media(max-width:760px){.people-hero{padding-top:115px}.people-stage-wrap{padding-top:15px}.people-stage{width:calc(100% - 22px);height:auto;max-height:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start}.person-tile{position:relative;left:auto;top:auto;width:100%;height:auto;aspect-ratio:3/4;transform:none!important;rotate:0deg!important}.person-tile:nth-child(3n+1){aspect-ratio:4/5}.person-tile:nth-child(4n){aspect-ratio:2/3}.person-tile .caption{opacity:1;transform:none;left:12px;right:10px;bottom:12px}.person-tile .name{font-size:21px}.person-tile .role{font-size:11px}.person-tile .number{top:9px;left:10px}.person-tile:after{opacity:.9}.person-tile:hover,.person-tile.is-active{transform:scale(1.025)!important}.people-stage-hint{width:calc(100% - 28px);font-size:10px}.people-bottom .inner{display:block}.people-bottom p{margin-top:20px}}
+@media(prefers-reduced-motion:reduce){.person-tile,.person-tile img,.person-tile .caption{transition:none}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="container nav"><a class="brand" href="../index.html">ЖИВОЙ САД</a><nav class="navlinks"><a href="holmy.html">Холмы</a><a href="sad.html">Живой сад</a><a href="ognezar.html">Огнезар</a><a href="weekend.html">Выходные</a><a href="people.html">Люди</a><a href="products.html">Продукты</a><a href="contacts.html">Как добраться</a></nav><span class="menu">МЕНЮ</span></div></header>
+<main>
+<section class="people-hero"><div class="container"><div class="kicker">Чудесные Холмы · люди и их дела</div><h1>Каждый —<br>целый мир.</h1><p class="lead">Музыканты, мастера, художники, садоводы и те, кто придумывает жизнь по-своему. Познакомьтесь с людьми, из которых складываются Холмы.</p><div class="people-note">Фотографии из архива holmy.by · наведите курсор, чтобы познакомиться</div></div></section>
+<section class="people-stage-wrap" aria-label="Выберите человека"><div class="people-stage" id="peopleStage">
+<button class="person-tile tile-1" type="button" aria-label="Яросвет, гусляр"><img src="https://holmy.by/assets/img/people/dmitry-bachishe.jpg" alt="Дмитрий Бачище с гуслями"><span class="number">01 / МУЗЫКА</span><span class="caption"><span class="name">Яросвет</span><span class="role">Гусляр. Мастерская «ГуслЯръ». Изготовление гуслей, звуковые погружения.</span></span></button>
+<button class="person-tile tile-2" type="button" aria-label="Алеся, керамика"><img src="https://holmy.by/assets/img/people/alya-bachishe.jpg" alt="Алеся Бачище"><span class="number">02 / ГЛИНА</span><span class="caption"><span class="name">Алеся</span><span class="role">Керамика, посуда и творческие мастер-классы.</span></span></button>
+<button class="person-tile tile-3" type="button" aria-label="Александр Танана, художник"><img src="https://holmy.by/assets/img/legacy/craft/craft-08.jpg" alt="Мастерская и совместная творческая работа"><span class="number">03 / ИСКУССТВО</span><span class="caption"><span class="name">Мастерские Холмов</span><span class="role">Ремёсла, творческие занятия и люди, которые передают навыки.</span></span></button>
+<button class="person-tile tile-4" type="button" aria-label="Юлия, хутор"><img src="https://holmy.by/assets/img/legacy/nature/nature-01.jpg" alt="Указатели и жизнь деревенского сообщества"><span class="number">04 / ЗЕМЛЯ</span><span class="caption"><span class="name">Деревенские истории</span><span class="role">Места, проекты и инициативы жителей Чудесных Холмов.</span></span></button>
+<button class="person-tile tile-5" type="button" aria-label="Никита, дом и гостеприимство"><img src="https://holmy.by/assets/img/people/nikita-kononov.jpg" alt="Никита Кононов"><span class="number">05 / ДОМ</span><span class="caption"><span class="name">Никита Кононов</span><span class="role">Гостевой дом «Хата», баня, мебель и помощь по хозяйству.</span></span></button>
+<button class="person-tile tile-6" type="button" aria-label="Кристина, деревенская жизнь"><img src="https://holmy.by/assets/img/people/marina-i-vova-kozlovy.jpg" alt="Марина и Вова Козловы"><span class="number">06 / ДЕРЕВНЯ</span><span class="caption"><span class="name">Марина и Вова</span><span class="role">Гостеприимство, деревенская еда, фотография и музыка.</span></span></button>
+<button class="person-tile tile-7" type="button" aria-label="Настасья, творчество"><img src="https://holmy.by/assets/img/people/volga-palunisa.jpg" alt="Вольга Palunisa с букетом полевых цветов"><span class="number">07 / ИДЕИ</span><span class="caption"><span class="name">Вольга Palunisa</span><span class="role">Выцінанка, інтуіцыйныя выяўленчыя практыкі, партрэты.</span></span></button>
+<button class="person-tile tile-8" type="button" aria-label="Лена Sun, практики"><img src="https://holmy.by/assets/img/legacy/guests/guests-01.jpg" alt="Афиша творческого события из архива Холмов"><span class="number">08 / ТИШИНА</span><span class="caption"><span class="name">События и встречи</span><span class="role">Мастер-классы, детские занятия и совместные праздники.</span></span></button>
+<button class="person-tile tile-9" type="button" aria-label="Илья Зарецкий, творчество"><img src="https://holmy.by/assets/img/legacy/craft/craft-08.jpg" alt="Совместная работа в мастерской"><span class="number">09 / ТВОРЧЕСТВО</span><span class="caption"><span class="name">Творческие мастерские</span><span class="role">Дерево, ремесло, обучение и идеи, которые становятся делом.</span></span></button>
+<button class="person-tile tile-10" type="button" aria-label="Люди Холмов, встречи"><img src="https://holmy.by/assets/img/legacy/nature/nature-01.jpg" alt="Ориентиры и места в Чудесных Холмах"><span class="number">10 / ВСТРЕЧИ</span><span class="caption"><span class="name">И ещё многие</span><span class="role">Здесь у каждого своя история — и есть чем поделиться.</span></span></button>
+</div><div class="people-stage-hint"><span class="hint-mark">Выберите лицо, историю или ремесло</span><span>Фотографии загружаются с holmy.by · переходов пока нет</span></div></section>
+<section class="people-bottom"><div class="container inner"><h2>У каждого дела — своё лицо.</h2><p>Сейчас это пространство знакомства. Позже у каждого человека появится своя страница с историей, работами, услугами и способом связаться.</p></div></section>
+</main>
+<footer class="site-footer"><div class="container footergrid"><div><div class="brand">ЖИВОЙ САД</div><p>Чудесные Холмы · Беларусь<br>ФХ «Огнезар»</p></div><div><b>Навигация</b><p class="small"><a href="holmy.html">Холмы</a><br><a href="sad.html">Живой сад</a><br><a href="weekend.html">Выходные</a><br><a href="people.html">Люди</a></p></div><div><b>Связь</b><p class="small"><a href="https://www.instagram.com/zhyvy.sad/">Instagram Живого сада</a><br><a href="https://www.instagram.com/chudesnye.holmy/">Instagram Холмов</a></p></div></div></footer>
+<script>
+(() => {
+ const stage=document.getElementById('peopleStage');
+ const tiles=[...stage.querySelectorAll('.person-tile')];
+ let active=null;
+ function clear(){tiles.forEach(t=>{t.style.setProperty('--x','0px');t.style.setProperty('--y','0px')});stage.classList.remove('is-playing')}
+ function spread(target){
+   const box=stage.getBoundingClientRect(), tr=target.getBoundingClientRect();
+   const cx=tr.left+tr.width/2-box.left, cy=tr.top+tr.height/2-box.top;
+   stage.classList.add('is-playing');
+   tiles.forEach((tile,i)=>{
+     if(tile===target)return;
+     const r=tile.getBoundingClientRect(), x=r.left+r.width/2-box.left, y=r.top+r.height/2-box.top;
+     let dx=x-cx,dy=y-cy,dist=Math.sqrt(dx*dx+dy*dy)||1;
+     const strength=Math.max(0,1-dist/650)*34;
+     tile.style.setProperty('--x',`${dx/dist*strength}px`);
+     tile.style.setProperty('--y',`${dy/dist*strength}px`);
+   });
+ }
+ tiles.forEach(tile=>{
+   tile.addEventListener('pointerenter',()=>{if(matchMedia('(max-width:760px)').matches)return;spread(tile)});
+   tile.addEventListener('pointerleave',()=>{if(!active)clear()});
+   tile.addEventListener('focus',()=>spread(tile));
+   tile.addEventListener('blur',()=>{if(!active)clear()});
+   tile.addEventListener('click',()=>{
+     if(matchMedia('(max-width:760px)').matches){
+       if(active===tile){tile.classList.remove('is-active');active=null}else{tiles.forEach(t=>t.classList.remove('is-active'));active=tile;tile.classList.add('is-active')}
+     }
+     // Intentionally no navigation yet: this is the selection page prototype.
+   });
+ });
+ stage.addEventListener('pointerleave',()=>{if(!active)clear()});
+})();
+</script>
+</body></html>
